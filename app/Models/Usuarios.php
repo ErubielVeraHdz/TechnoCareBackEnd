@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Usuarios extends Model
 {
-     protected $fillable = [
+    protected $fillable = [
         'name',
         'lastname',
         'email',
@@ -19,7 +19,7 @@ class Usuarios extends Model
         'password'
     ];
 
-    public function setPasswordAttribute($value){
+    /*public function setPasswordAttribute($value){
         $this->attributes['password'] = bcrypt($value);
-    }
+    }*/
 }

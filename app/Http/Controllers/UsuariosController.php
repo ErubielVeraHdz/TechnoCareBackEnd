@@ -38,10 +38,12 @@ class UsuariosController extends Controller
             'type' => 'nullable|string|max:10',
         ]);
 
+        $usuario = Usuarios::create($request->all());
+        return response()->json($usuario,201);
 
         //dd($request->all());
 
-        $usuario = Usuarios::create([
+        /*$usuario = Usuarios::create([
             'name' => $request->name,
             'lastname' => $request->lastname,
             'email' => $request->email,
@@ -52,7 +54,7 @@ class UsuariosController extends Controller
 
         return response()->json($usuario, 201)
             ->header('Access-Control-Allow-Origin', '*')
-            ->header('Access-Control-Allow-Methods', 'POST, GET, OPTIONS, DELETE, PUT');
+            ->header('Access-Control-Allow-Methods', 'POST, GET, OPTIONS, DELETE, PUT');*/
     }
 
 
