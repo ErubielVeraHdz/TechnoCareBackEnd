@@ -35,7 +35,7 @@ class UsuariosController extends Controller
             'email' => 'required|string|email|max:255|unique:usuarios',
             'phone' => 'nullable|string|max:15',
             'password' => 'required|string|min:8',
-            'type' => 'nullable|string|max:10',
+            'type' => 'required|string|max:20',
         ]);
 
         $usuario = Usuarios::create($request->all());
