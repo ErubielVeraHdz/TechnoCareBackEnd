@@ -7,10 +7,12 @@ use Illuminate\Database\Eloquent\Model;
 class Equipos extends Model
 {
     protected $fillable = [
+        'nombreU',
         'dispositivo',
         'numserie',
         'modelo',
         'descripcion',
-        'tipomto'
+        'tipomto',
+        'estado'
     ];
 }

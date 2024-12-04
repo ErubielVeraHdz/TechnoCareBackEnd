@@ -56,18 +56,21 @@ class EquiposController extends Controller
 
     public function store(Request $request)
     {
-        $equipos = Equipos::create([
-            'dispositivo' => $request->dispositivo,
-            'numserie' => $request->numserie,
-            'modelo' => $request->modelo,
-            'descripcion' => $request->descripcion,
-            'tipomto' => $request->tipomto ?? 'Preventivo',
+        $validatedData = $request->validate([
+            'nombreU' => 'required|string',
+            'dispositivo' => 'required|string',
+            'numserie' => 'required|string',
+            'modelo' => 'required|string',
+            'descripcion' => 'required|string',
+            'tipomto' => 'required|string',
         ]);
 
-        return response()->json($equipos, 201)
-            ->header('Access-Control-Allow-Origin', '*')
-            ->header('Access-Control-Allow-Methods', 'POST, GET, OPTIONS, DELETE, PUT');
+        $equipos = Equipos::create($validatedData);
+
+        return response()->json($equipos, 201);
     }
+
+
 
     /**
      * Show the form for editing the specified resource.

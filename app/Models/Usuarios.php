@@ -19,7 +19,7 @@ class Usuarios extends Model
         'password'
     ];
 
-    /*public function setPasswordAttribute($value){
+    public function setPasswordAttribute($value){
         $this->attributes['password'] = bcrypt($value);
-    }*/
+    }
 }

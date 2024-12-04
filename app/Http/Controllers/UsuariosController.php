@@ -66,10 +66,6 @@ class UsuariosController extends Controller
       
     }
 
-    public function register(Request $request){
-        $usuario = Usuarios::create($request->validated()); 
-    }
-
     /**
      * Show the form for editing the specified resource.
      */
