@@ -63,7 +63,16 @@ class UsuariosController extends Controller
      */
     public function show($idUser)
     {
-      
+      // Obtener el usuario por ID
+      $usuario = Usuarios::find($idUser);
+
+      // Verificar si se encuentra el usuario
+      if ($usuario) {
+          return response()->json($usuario, 200); // Retornar los datos del usuario
+      }
+
+      // Si no se encuentra, retornar un error 404
+      return response()->json(['message' => 'Usuario no encontrado'], 404);
     }
 
     /**
@@ -79,9 +88,41 @@ class UsuariosController extends Controller
      */
     public function update(Request $request, Usuarios $usuarios)
     {
-        //
+        
+        $rules = [
+            'name' => 'required|string|max:255',
+            'lastname' => 'required|string|max:255',
+            'email' => 'required|string|email|max:255|unique:usuarios,email,' . $usuarios->id,
+            'phone' => 'nullable|string|max:15',
+            'newPassword' => 'nullable|string|min:8', // Opcional
+            'confirmPassword' => 'nullable|string|same:newPassword', // Debe coincidir si está presente
+        ];
+
+        // Validar datos
+        $request->validate($rules);
+
+        // Actualizar datos de usuario
+        $usuarios->name = $request->input('name');
+        $usuarios->lastname = $request->input('lastname');
+        $usuarios->email = $request->input('email');
+        $usuarios->phone = $request->input('phone');
+
+        // Actualizar la contraseña si se da
+        if ($request->filled('newPassword')) { 
+            $usuarios->password = bcrypt($request->input('newPassword'));
+        }
+
+        // Guardar los cambios
+        $usuarios->save();
+
+        // Responder con éxito
+        return response()->json([
+            'message' => 'Usuario actualizado con éxito',
+            'usuario' => $usuarios,
+        ], 200);
     }
 
+    
     /**
      * Remove the specified resource from storage.
      */
@@ -94,4 +135,4 @@ class UsuariosController extends Controller
     {
         
     }
-}
+} 
