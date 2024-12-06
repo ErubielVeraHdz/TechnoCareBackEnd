@@ -23,7 +23,7 @@ class LoginController extends Controller
 
         // Generar token si usas JWT
         // $token = $usuario->createToken('auth_token')->plainTextToken;
-
+        
         return response()->json([
             'mensaje' => 'Login exitoso',
             'user' => [
