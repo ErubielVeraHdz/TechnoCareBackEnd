@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UsuariosController;
 use App\Http\Controllers\EquiposController;
 use App\Http\Controllers\LoginController;
+use App\Http\Controllers\ReportesController;
 
 Route::get('/user', function (Request $request) {
     return $request->user();
@@ -22,8 +23,9 @@ Route::post('/equipos', [EquiposController::class, 'store']);
 Route::post('/login', [LoginController::class, 'login']);
 
 
-Route::get('/equipos', [EquiposController::class, 'index']); //Todos los empleados
-Route::get('/equipos/{id}',[EquiposController::class,'show']); //Un empleado en específico
+Route::get('/equipos', [EquiposController::class, 'index']); //Todos los equipos
+Route::get('/equipos/{id}',[EquiposController::class,'show']); //Un equipo en específico
 Route::put('/equipos/{id}', [EquiposController::class, 'update']);//Actualizar
 Route::delete('/equipos/{id}', [EquiposController::class, 'destroy']);//Eliminar
 
+Route::get('/reportes', [ReportesController::class, 'index']); //Todos los reportes

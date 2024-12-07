@@ -20,7 +20,7 @@ class UsuariosController extends Controller
      */
     public function create(Request $request)
     {
-        $usuario = Usuario::create($request->all());
+        $usuario = Usuarios::create($request->all());
         return response()->json($usuario,201);
     }
 
@@ -128,7 +128,12 @@ class UsuariosController extends Controller
      */
     public function destroy(Usuarios $usuarios)
     {
-        //
+         $usuarios = Usuarios::find($usuarios);
+        if(is_null($usuarios)){
+            return response()->json(["mensaje" => "Empleado no encontrado"],404);
+        }
+        $usuarios->delete();
+        return response()->json(['message' => 'Usuario eliminado con éxito']);
     }
 
     public function login(Request $request)
