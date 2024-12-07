@@ -5,8 +5,14 @@ namespace App\Http\Controllers;
 use App\Models\Equipos;
 use Illuminate\Http\Request;
 
+use App\Mail\NotificacionUsuario;
+use Illuminate\Support\Facades\Mail;
+
 class EquiposController extends Controller
 {
+
+   
+    
     /**
      * Display a listing of the resource.
      */
