@@ -20,7 +20,7 @@ class UsuariosController extends Controller
      */
     public function create(Request $request)
     {
-        $usuario = Usuario::create($request->all());
+        $usuario = Usuarios::create($request->all());
         return response()->json($usuario,201);
     }
 
