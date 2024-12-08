@@ -23,12 +23,13 @@ Route::post('/usuarios', [UsuariosController::class, 'store']);
 Route::post('/equipos', [EquiposController::class, 'store']);
 Route::post('/login', [LoginController::class, 'login']);
 
+Route::post('/reportes', [ReportesController::class, 'store']);//insertar reporte
 
 Route::get('/equipos', [EquiposController::class, 'index']); //Todos los equipos
 Route::get('/equipos/{id}',[EquiposController::class,'show']); //Un equipo en específico
 Route::put('/equipos/{id}', [EquiposController::class, 'update']);//Actualizar
 Route::delete('/equipos/{id}', [EquiposController::class, 'destroy']);//Eliminar
 
-Route::get('/reportes', [ReportesController::class, 'index']); //Todos los reportes
+Route::get('/reportes', [ReportesController::class, 'index']); // ver Todos los reportes
 
 Route::post('/send-mail', [MailController::class, 'sendMail']);
