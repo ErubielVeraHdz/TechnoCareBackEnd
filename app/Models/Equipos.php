@@ -8,6 +8,7 @@ class Equipos extends Model
 {
     protected $fillable = [
         'nombreU',
+        'emailU',
         'dispositivo',
         'numserie',
         'modelo',

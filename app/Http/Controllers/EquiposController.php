@@ -61,6 +61,7 @@ class EquiposController extends Controller
     {
         $validatedData = $request->validate([
             'nombreU' => 'required|string',
+            'emailU' => 'required|string',
             'dispositivo' => 'required|string',
             'numserie' => 'required|string',
             'modelo' => 'required|string',
