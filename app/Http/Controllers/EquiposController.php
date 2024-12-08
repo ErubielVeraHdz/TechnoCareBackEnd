@@ -8,46 +8,17 @@ use Illuminate\Http\Request;
 class EquiposController extends Controller
 {
 
-
-    
-    /**
-     * Display a listing of the resource.
-     */
     public function index()
     {
         return response()->json(Equipos::all(),200);
 
     }
 
-    /**
-     * Show the form for creating a new resource.
-     */
     public function create(Request $request)
     {
         
     }
 
-    /**
-     * Store a newly created resource in storage.
-     */
-    // public function store(Request $request)
-    // {
-    //     $equipos = Equipos::create([
-    //         'dispositivo' => $request->dispositivo,
-    //         'numserie' => $request->numserie,
-    //         'modelo' => $request->modelo,
-    //         'descripcion' => $request->descripcion,
-    //         'tipomto' => $request->tipomto ?? 'Preventivo',
-    //     ]);
-
-    //     return response()->json($equipos, 201)
-    //         ->header('Access-Control-Allow-Origin', '*')
-    //         ->header('Access-Control-Allow-Methods', 'POST, GET, OPTIONS, DELETE, PUT');
-    // }
-
-    /**
-     * Display the specified resource.
-     */
     public function show($id)
     {
         $equipos = Equipos::find($id);
@@ -74,19 +45,11 @@ class EquiposController extends Controller
         return response()->json($equipos, 201);
     }
 
-
-
-    /**
-     * Show the form for editing the specified resource.
-     */
     public function edit(Equipos $equipos)
     {
         //
     }
 
-    /**
-     * Update the specified resource in storage.
-     */
     public function update(Request $request, $id)
     {
         $equipos = Equipos::find($id);
@@ -97,9 +60,6 @@ class EquiposController extends Controller
         return response()->json($equipos,201);
     }
 
-    /**
-     * Remove the specified resource from storage.
-     */
     public function destroy( $id)
     {
         $equipos = Equipos::find($id);
