@@ -13,13 +13,17 @@ class MailController extends Controller
         $validatedData = $request->validate([
             'message' => 'required|string',
         ]);
-
+    
         $details = [
             'message' => $validatedData['message']
         ];
-
-        Mail::to('elzeldero28@gmail.com')->send(new NotificacionEquipo($details));
-
-        return response()->json(['message' => 'Correo enviado con éxito'], 200);
+    
+        try {
+            Mail::to('elzeldero28@gmail.com')->send(new NotificacionEquipo($details));
+            return response()->json(['message' => 'Correo enviado con éxito'], 200);
+        } catch (\Exception $e) {
+            return response()->json(['error' => 'Error al enviar el correo: ' . $e->getMessage()], 500);
+        }
     }
+    
 }
