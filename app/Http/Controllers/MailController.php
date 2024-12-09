@@ -38,7 +38,7 @@ class MailController extends Controller
         ];
     
         try {
-            Mail::to('elzeldero28@gmail.com')->send(new NotificacionEquipo2($details));
+            Mail::to('chuchoalonso777@gmail.com')->send(new NotificacionEquipo2($details));
             return response()->json(['message' => 'Correo enviado con éxito'], 200);
         } catch (\Exception $e) {
             return response()->json(['error' => 'Error al enviar el correo: ' . $e->getMessage()], 500);

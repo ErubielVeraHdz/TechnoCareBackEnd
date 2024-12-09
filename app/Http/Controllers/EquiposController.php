@@ -6,6 +6,8 @@ use App\Models\Equipos;
 use Illuminate\Http\Request;
 use App\Mail\NotificacionEquipo;
 use App\Mail\NotificacionEquipo2;
+
+use Illuminate\Support\Facades\Mail;
 class EquiposController extends Controller
 {
 
@@ -30,21 +32,38 @@ class EquiposController extends Controller
     }
 
     public function store(Request $request)
-    {
-        $validatedData = $request->validate([
-            'nombreU' => 'required|string',
-            'emailU' => 'required|string',
-            'dispositivo' => 'required|string',
-            'numserie' => 'required|string',
-            'modelo' => 'required|string',
-            'descripcion' => 'required|string',
-            'tipomto' => 'required|string',
-        ]);
+{
+    $validatedData = $request->validate([
+        'nombreU' => 'required|string',
+        'emailU' => 'required|string|email',
+        'dispositivo' => 'required|string',
+        'numserie' => 'required|string',
+        'modelo' => 'required|string',
+        'descripcion' => 'required|string',
+        'tipomto' => 'required|string',
+    ]);
 
+    try {
+        // Guardar los datos en la base de datos
         $equipos = Equipos::create($validatedData);
 
-        return response()->json($equipos, 201);
+        // Preparar detalles del correo
+        $details = [
+            'message' => 
+                         'Dispositivo: ' . $validatedData['dispositivo'] . ',  Modelo: ' . $validatedData['modelo'] .
+                         ',  Número de serie: ' . $validatedData['numserie'] . '.',
+            'user' => $validatedData['nombreU'],
+        ];
+
+        // Enviar correo
+        Mail::to('chuchoalonso777@gmail.com')->send(new NotificacionEquipo($details));
+
+        return response()->json(['message' => 'Registro creado y correo enviado con éxito', 'data' => $equipos], 201);
+    } catch (\Exception $e) {
+        return response()->json(['error' => 'Ocurrió un error: ' . $e->getMessage()], 500);
     }
+}
+
 
     public function edit(Equipos $equipos)
     {

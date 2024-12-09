@@ -10,16 +10,16 @@ class NotificacionEquipo extends Mailable
 {
     use Queueable, SerializesModels;
 
-    public $detalles;
+    public $details;
 
-    public function __construct($detalles)
+    public function __construct($details)
     {
-        $this->detalles = $detalles;
+        $this->details = $details;
     }
 
     public function build()
     {
-        return $this->subject('Equipo Listo')
+        return $this->subject('Nueva solicitud')
                     ->view('emails.contact');
     }
 
