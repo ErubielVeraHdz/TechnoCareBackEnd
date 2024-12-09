@@ -15,12 +15,12 @@ class MailController extends Controller
             'message' => 'required|string',
         ]);
     
-        $detalles = [
+        $details = [
             'message' => $validatedData['message']
         ];
     
         try {
-            Mail::to('elzeldero28@gmail.com')->send(new NotificacionEquipo($detalles));
+            Mail::to('elzeldero28@gmail.com')->send(new NotificacionEquipo($details));
             return response()->json(['message' => 'Correo enviado con éxito'], 200);
         } catch (\Exception $e) {
             return response()->json(['error' => 'Error al enviar el correo: ' . $e->getMessage()], 500);
@@ -33,12 +33,12 @@ class MailController extends Controller
             'message' => 'required|string',
         ]);
     
-        $detalles = [
+        $details = [
             'message' => $validatedData['message']
         ];
     
         try {
-            Mail::to('elzeldero28@gmail.com')->send(new NotificacionEquipo2($detalles));
+            Mail::to('elzeldero28@gmail.com')->send(new NotificacionEquipo2($details));
             return response()->json(['message' => 'Correo enviado con éxito'], 200);
         } catch (\Exception $e) {
             return response()->json(['error' => 'Error al enviar el correo: ' . $e->getMessage()], 500);

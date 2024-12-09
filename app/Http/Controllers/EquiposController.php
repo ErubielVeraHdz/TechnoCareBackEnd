@@ -4,7 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Models\Equipos;
 use Illuminate\Http\Request;
-
+use App\Mail\NotificacionEquipo;
+use App\Mail\NotificacionEquipo2;
 class EquiposController extends Controller
 {
 
