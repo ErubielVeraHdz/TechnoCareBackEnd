@@ -8,9 +8,9 @@ use App\Http\Controllers\LoginController;
 use App\Http\Controllers\ReportesController;
 use App\Http\Controllers\MailController;
 
-Route::get('/user', function (Request $request) {
-    return $request->user();
-})->middleware('auth:sanctum');
+// Route::get('/user', function (Request $request) {
+//     return $request->user();
+// })->middleware('auth:sanctum');
 
 /*Route::middleware('auth:sanctum')->group(function () {
     Route::post('/equipos', [EquiposController::class, 'store']);
@@ -19,6 +19,7 @@ Route::get('/user', function (Request $request) {
 Route::put('/usuarios/{usuarios}', [UsuariosController::class, 'update']);
 Route::get('usuarios/{idUser}', [UsuariosController::class, 'show']);
 Route::get('/usuarios', [UsuariosController::class, 'index']); 
+
 Route::post('/usuarios', [UsuariosController::class, 'store']); 
 Route::post('/equipos', [EquiposController::class, 'store']);
 Route::post('/login', [LoginController::class, 'login']);
