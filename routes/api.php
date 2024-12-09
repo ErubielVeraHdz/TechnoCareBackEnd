@@ -34,3 +34,9 @@ Route::get('/reportes', [ReportesController::class, 'index']); // ver Todos los 
 
 Route::post('/send-mail', [MailController::class, 'sendMail']); //correo si se pudo
 Route::post('/mail', [MailController::class, 'sendemail']); //correo no se pudo
+
+Route::get('/equipos', [EquiposController::class, 'resumen']);
+Route::get('/usuarios', [UsuariosController::class, 'resumen']);
+Route::get('/reportes', [ReportesController::class, 'resumen']);
+
+

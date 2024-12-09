@@ -12,6 +12,17 @@ class ReportesController extends Controller
         return response()->json(Reportes::all(), 200);
     }
 
+    public function resumen()
+    {
+        $equipos = Reportes::all();
+        $total = $equipos->count(); // Contar los registros
+        
+        return response()->json([
+            'total' => $total,         // Total de registros
+            'data' => $equipos         // Lista de equipos
+        ], 200);
+    }
+
     public function store(Request $request)
     {
 

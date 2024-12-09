@@ -13,6 +13,17 @@ class UsuariosController extends Controller
         return response()->json(Usuarios::all(),200);
     }
 
+    public function resumen()
+    {
+        $equipos = Usuarios::all();
+        $total = $equipos->count(); // Contar los registros
+        
+        return response()->json([
+            'total' => $total,         // Total de registros
+            'data' => $equipos         // Lista de equipos
+        ], 200);
+    }
+
     public function create(Request $request)
     {
         $usuario = Usuarios::create($request->all());

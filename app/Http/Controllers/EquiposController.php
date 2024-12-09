@@ -22,6 +22,18 @@ class EquiposController extends Controller
         
     }
 
+    public function resumen()
+{
+    $equipos = Equipos::all();
+    $total = $equipos->count(); // Contar los registros
+    
+    return response()->json([
+        'total' => $total,         // Total de registros
+        'data' => $equipos         // Lista de equipos
+    ], 200);
+}
+
+
     public function show($id)
     {
         $equipos = Equipos::find($id);
