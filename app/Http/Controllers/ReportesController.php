@@ -2,28 +2,28 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Reportes;
+use App\Models\Reportes; // Importa el modelo correcto
 use Illuminate\Http\Request;
 
 class ReportesController extends Controller
 {
     public function index()
     {
-        return response()->json(Reportes::all(),200);
-
+        return response()->json(Reportes::all(), 200);
     }
 
     public function store(Request $request)
     {
-        $validatedData = $request->validate([
-            'emailU' => 'required|string',
-            'equipID' => 'required|string',
-            'fail' => 'required|string',
-            'solution' => 'required|string'
-        ]);
 
-        $equipos = Reportes::create($validatedData);
+        dd($request->all());
+        
+        $reporte = new Reportes(); // Instancia del modelo correcto
+        $reporte->emailU = $request->input('email');
+        $reporte->equipID = $request->input('idEquipo');
+        $reporte->fail = $request->input('falla');
+        $reporte->solution = $request->input('solucion');
+        $reporte->save();
 
-        return response()->json($equipos, 201);
+        return response()->json(['message' => 'Reporte guardado con éxito', 'reporte' => $reporte], 201);
     }
 }
