@@ -6,7 +6,7 @@ use Illuminate\Bus\Queueable;
 use Illuminate\Mail\Mailable;
 use Illuminate\Queue\SerializesModels;
 
-class NotificacionEquipo extends Mailable
+class NotificacionEquipo2 extends Mailable
 {
     use Queueable, SerializesModels;
 
@@ -19,8 +19,8 @@ class NotificacionEquipo extends Mailable
 
     public function build()
     {
-        return $this->subject('Equipo Listo')
-                    ->view('emails.contact');
+        return $this->subject('Equipo sin reparo')
+                    ->view('emails.contacto');
     }
-
+    
 }

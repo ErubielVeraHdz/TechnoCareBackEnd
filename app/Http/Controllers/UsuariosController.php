@@ -7,26 +7,19 @@ use Illuminate\Http\Request;
 
 class UsuariosController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
+
     public function index()
     {
         return response()->json(Usuarios::all(),200);
     }
 
-    /**
-     * Show the form for creating a new resource.
-     */
     public function create(Request $request)
     {
         $usuario = Usuarios::create($request->all());
         return response()->json($usuario,201);
     }
 
-    /**
-     * Store a newly created resource in storage.
-     */
+   
     public function store(Request $request)
     {
         $request->validate([
@@ -41,26 +34,9 @@ class UsuariosController extends Controller
         $usuario = Usuarios::create($request->all());
         return response()->json($usuario,201);
 
-        //dd($request->all());
-
-        /*$usuario = Usuarios::create([
-            'name' => $request->name,
-            'lastname' => $request->lastname,
-            'email' => $request->email,
-            'phone' => $request->phone,
-            'password' => bcrypt($request->password),
-            'type' => $request->type ?? 'Cliente',
-        ]);
-
-        return response()->json($usuario, 201)
-            ->header('Access-Control-Allow-Origin', '*')
-            ->header('Access-Control-Allow-Methods', 'POST, GET, OPTIONS, DELETE, PUT');*/
     }
 
 
-    /**
-     * Display the specified resource.
-     */
     public function show($idUser)
     {
       // Obtener el usuario por ID
@@ -75,17 +51,11 @@ class UsuariosController extends Controller
       return response()->json(['message' => 'Usuario no encontrado'], 404);
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     */
     public function edit(Usuarios $usuarios)
     {
         //
     }
 
-    /**
-     * Update the specified resource in storage.
-     */
     public function update(Request $request, Usuarios $usuarios)
     {
         
@@ -122,8 +92,6 @@ class UsuariosController extends Controller
         ], 200);
     }
 
-    
-    
     public function destroy(Usuarios $usuarios)
     {
          $usuarios = Usuarios::find($usuarios);

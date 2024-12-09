@@ -32,4 +32,5 @@ Route::delete('/equipos/{id}', [EquiposController::class, 'destroy']);//Eliminar
 
 Route::get('/reportes', [ReportesController::class, 'index']); // ver Todos los reportes
 
-Route::post('/send-mail', [MailController::class, 'sendMail']);
+Route::post('/send-mail', [MailController::class, 'sendMail']); //correo si se pudo
+Route::post('/mail', [MailController::class, 'sendemail']); //correo no se pudo

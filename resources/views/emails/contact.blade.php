@@ -4,7 +4,7 @@
     <title>Mensaje de Contacto</title>
 </head>
 <body>
-    <h1>Nuevo Mensaje de Contacto</h1>
-    <p><strong>Mensaje:</strong> {{ $details['message'] ?? 'Sin mensaje proporcionado.' }}</p>
+    <h3>Equipo listo!</h3>
+    <p><strong>Reparación:</strong> Su equipo se ha reparado correctamente, favor de acudir a nuestras instalaciones para recogerlo</p>
     </body>
 </html>
