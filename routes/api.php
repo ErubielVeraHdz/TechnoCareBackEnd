@@ -8,9 +8,9 @@ use App\Http\Controllers\LoginController;
 use App\Http\Controllers\ReportesController;
 use App\Http\Controllers\MailController;
 
-// Route::get('/user', function (Request $request) {
-//     return $request->user();
-// })->middleware('auth:sanctum');
+Route::get('/user', function (Request $request) {
+    return $request->user();
+})->middleware('auth:sanctum');
 
 /*Route::middleware('auth:sanctum')->group(function () {
     Route::post('/equipos', [EquiposController::class, 'store']);
@@ -19,7 +19,6 @@ use App\Http\Controllers\MailController;
 Route::put('/usuarios/{usuarios}', [UsuariosController::class, 'update']);
 Route::get('usuarios/{idUser}', [UsuariosController::class, 'show']);
 Route::get('/usuarios', [UsuariosController::class, 'index']); 
-
 Route::post('/usuarios', [UsuariosController::class, 'store']); 
 Route::post('/equipos', [EquiposController::class, 'store']);
 Route::post('/login', [LoginController::class, 'login']);
@@ -35,9 +34,3 @@ Route::get('/reportes', [ReportesController::class, 'index']); // ver Todos los 
 
 Route::post('/send-mail', [MailController::class, 'sendMail']); //correo si se pudo
 Route::post('/mail', [MailController::class, 'sendemail']); //correo no se pudo
-
-Route::get('/equipos', [EquiposController::class, 'resumen']);
-Route::get('/usuarios', [UsuariosController::class, 'resumen']);
-Route::get('/reportes', [ReportesController::class, 'resumen']);
-
-

@@ -13,34 +13,6 @@ class UsuariosController extends Controller
         return response()->json(Usuarios::all(),200);
     }
 
-    public function admin()
-    {
-        // Filtra usuarios cuyo tipo sea 'Administrador'
-        $administradores = Usuarios::where('tipo', 'Administrador')->get();
-    
-        // Retorna los resultados en formato JSON
-        return response()->json($administradores, 200);
-    }
-    public function cliente()
-    {
-        // Filtra usuarios cuyo tipo sea 'Cliente'
-        $administradores = Usuarios::where('tipo', 'Cliente')->get();
-    
-        // Retorna los resultados en formato JSON
-        return response()->json($administradores, 200);
-    }
-
-    public function resumen()
-    {
-        $equipos = Usuarios::all();
-        $total = $equipos->count(); // Contar los registros
-        
-        return response()->json([
-            'total' => $total,         // Total de registros
-            'data' => $equipos         // Lista de equipos
-        ], 200);
-    }
-
     public function create(Request $request)
     {
         $usuario = Usuarios::create($request->all());
